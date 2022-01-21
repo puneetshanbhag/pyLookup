@@ -22,6 +22,8 @@ lookup_fields = []
 df_first = pd.read_excel(workbook_one)
 df_second = pd.read_excel(workbook_two)
 
+
+# Fetching the columns from second sheet and converting it to a list object and cleaningup
 # print(df_first.columns)
 # print(df_second.columns.ravel())
 lookup_fields = df_second.columns.ravel()
@@ -41,7 +43,7 @@ df_temp.dropna(subset=['Inventory.Status'], inplace=True)
 # Replace any NaN (if exist) to empty string
 df_temp = df_temp.replace(np.nan, '', regex=True)
 
-# Write output to output folder and file with sheet name `processed_data`
+# Write output to output folder and file with sheet name `processed_data`, change this if required
 df_temp.to_excel(workbook_result, sheet_name='processed_data', index=False)
 
 ######################### END ###############################
