@@ -53,8 +53,8 @@ df_first[lookup_key] = df_first[lookup_key].apply(format_key)
 df_second = pd.read_excel(workbook_two)
 
 # Move 'Billed.POS.Number' column to first position in the sheet
-first_column = df_second.pop(lookup_key)
-df_second.insert(0, lookup_key, first_column)
+# first_column = df_second.pop(lookup_key)
+# df_second.insert(0, lookup_key, first_column)
 
 # print('######################')
 # print(df_second)
@@ -69,11 +69,11 @@ lookup_fields = lookup_fields.tolist()
 # print('######################')
 # print(df_second.dtypes)
 
-df_temp = pd.merge(df_first, df_second[lookup_fields], on=lookup_key, how='right')
+df_temp = pd.merge(df_second[lookup_fields], df_first, on=lookup_key, how='right')
 # print(df_temp)
 
 # Drop all the rows which is present in file 2 but not in file 1
-df_temp.dropna(subset=['Wireless number'], inplace=True)
+# df_temp.dropna(subset=['Wireless number'], inplace=True)
 
 # print(df_temp)
 
